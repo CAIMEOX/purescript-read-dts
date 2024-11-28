@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "convert TypeScript declaration files to PureScript types",
   "scripts": {
-    "build": "tsc && spago build",
+    "build": "spago build",
     "format": "purs-tidy format-in-place src test",
     "test": "npm run-script build && spago test",
     "run": "npm run-script build && spago run"
