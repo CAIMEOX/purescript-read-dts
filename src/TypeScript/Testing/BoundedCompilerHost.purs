@@ -21,7 +21,7 @@ type BoundedCompilerHost =
   { directoryExists :: Opt (EffectFn1 DirName Boolean)
   , fileExists :: EffectFn1 FilePath Boolean
   , getCanonicalFileName :: EffectFn1 FilePath FilePath
-  , getCurrentDirectory :: Opt (Effect String)
+  -- , getCurrentDirectory :: Opt (Effect String)
   , getDefaultLibFileName :: EffectFn1 CompilerOptions FilePath
   , getDirectories :: Opt (EffectFn1 String (Array String))
   , getNewLine :: Effect String

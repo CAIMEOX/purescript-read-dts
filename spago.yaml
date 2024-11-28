@@ -1,0 +1,169 @@
+package:
+  dependencies:
+    - aff
+    - arrays
+    - bifunctors
+    - console
+    - control
+    - debug
+    - effect
+    - either
+    - exceptions
+    - filterable
+    - fixed-points
+    - foldable-traversable
+    - foreign
+    - foreign-object
+    - free
+    - functions
+    - identity
+    - integers
+    - js-object
+    - js-unsafe-stringify
+    - language-cst-parser
+    - lists
+    - matryoshka
+    - maybe
+    - monad-loops
+    - newtype
+    - node-buffer
+    - node-fs
+    - node-path
+    - nullable
+    - optparse
+    - ordered-collections
+    - partial
+    - pprint
+    - prelude
+    - profunctor
+    - profunctor-lenses
+    - record
+    - safe-coerce
+    - strings
+    - strings-extra
+    - test-unit
+    - tidy-codegen
+    - transformers
+    - tuples
+    - typelevel-prelude
+    - undefined-is-not-a-problem
+    - unsafe-coerce
+    - unsafe-reference
+  name: my-project
+workspace:
+  extraPackages:
+    dodo-printer:
+      dependencies:
+        - ansi
+        - foldable-traversable
+        - lists
+        - maybe
+        - strings
+      git: https://github.com/natefaubion/purescript-dodo-printer.git
+      ref: v2.1.0
+    js-object:
+      dependencies:
+        - heterogeneous
+      git: "https://github.com/purescript-codegen/purescript-js-object"
+      ref: main
+    js-unsafe-stringify:
+      dependencies: []
+      git: https://github.com/paluh/purescript-js-unsafe-stringify
+      ref: v0.2.1
+    language-cst-parser:
+      dependencies:
+        - arrays
+        - const
+        - effect
+        - either
+        - foldable-traversable
+        - free
+        - functors
+        - maybe
+        - numbers
+        - ordered-collections
+        - strings
+        - transformers
+        - tuples
+        - typelevel-prelude
+      git: https://github.com/natefaubion/purescript-language-cst-parser.git
+      ref: v0.9.1
+    matryoshka:
+      dependencies:
+        - fixed-points
+        - free
+        - prelude
+        - profunctor
+        - transformers
+      git: https://github.com/slamdata/purescript-matryoshka.git
+      ref: v1.0.0
+    pprint:
+      dependencies:
+        - arrays
+        - strings
+        - unfoldable
+      git: https://github.com/paf31/purescript-pprint.git
+      ref: v5.0.0
+    tidy:
+      dependencies:
+        - arrays
+        - dodo-printer
+        - foldable-traversable
+        - language-cst-parser
+        - lists
+        - maybe
+        - ordered-collections
+        - partial
+        - prelude
+        - strings
+        - tuples
+      git: https://github.com/natefaubion/purescript-tidy.git
+      ref: v0.7.0
+    tidy-codegen:
+      dependencies:
+        - aff
+        - ansi
+        - arrays
+        - avar
+        - bifunctors
+        - console
+        - control
+        - dodo-printer
+        - effect
+        - either
+        - enums
+        - exceptions
+        - filterable
+        - foldable-traversable
+        - free
+        - identity
+        - integers
+        - language-cst-parser
+        - lazy
+        - lists
+        - maybe
+        - newtype
+        - node-buffer
+        - node-child-process
+        - node-fs-aff
+        - node-path
+        - node-process
+        - node-streams
+        - ordered-collections
+        - parallel
+        - partial
+        - posix-types
+        - prelude
+        - record
+        - safe-coerce
+        - st
+        - strings
+        - tidy
+        - transformers
+        - tuples
+        - type-equality
+        - unicode
+      git: https://github.com/natefaubion/purescript-tidy-codegen.git
+      ref: v2.0.0
+  packageSet:
+    url: https://raw.githubusercontent.com/purescript/package-sets/psc-0.15.4-20221201/packages.json

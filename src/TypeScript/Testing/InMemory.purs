@@ -58,7 +58,7 @@ boundedCompilerHost opts = do
           pure (Array.any (eq p <<< _.path) sourceFiles')
       , directoryExists: opt $ mkEffectFn1 \d -> do
           pure (d == "")
-      , getCurrentDirectory: NoProblem.undefined -- opt $ pure ""
+      -- , getCurrentDirectory: NoProblem.undefined -- opt $ pure ""
       , getDirectories: NoProblem.undefined -- opt $ mkEffectFn1 $ const (pure [ "" ])
       , getCanonicalFileName: mkEffectFn1 pure
       , getNewLine: pure "\n"
@@ -74,6 +74,7 @@ boundedCompilerHost opts = do
       , useCaseSensitiveFileNames: pure true
       , writeFile: mkEffectFn3 (\_ _ _ -> pure unit)
       }
+
     host :: BoundedCompilerHost
     host = case opts.subhost of
       Nothing -> inMemoryHost
@@ -87,7 +88,7 @@ boundedCompilerHost opts = do
         , getNewLine: subhost.getNewLine
         , useCaseSensitiveFileNames: subhost.useCaseSensitiveFileNames
         , writeFile: subhost.writeFile
-        , getCurrentDirectory: subhost.getCurrentDirectory
+        -- , getCurrentDirectory: subhost.getCurrentDirectory
         , getDirectories: subhost.getDirectories
         , getSourceFile: mkEffectFn2 \p x -> do
             runEffectFn2 subhost.getSourceFile p x >>= NoProblem.toMaybe >>> case _ of
@@ -103,5 +104,4 @@ boundedCompilerHost opts = do
 
 runOptEffectFn1 :: forall i o. NoProblem.Opt (EffectFn1 i o) -> o -> i -> Effect o
 runOptEffectFn1 optFnEff1 def = NoProblem.pseudoMap runEffectFn1 optFnEff1 NoProblem.! (const $ pure def)
-
 

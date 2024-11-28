@@ -201,7 +201,6 @@ readRootDeclarationNodes program = do
             traceM "declaration:"
             traceM escapedText
 
-
       -- | Ignore non exported declarations and "semicolons"
       if isNodeExported checker node && isNothing (asEmptyStatement node) then do
         asDeclarationStatement node
@@ -252,15 +251,15 @@ readRootVariableStatements program = do
       else
         Nothing
 
-      -- void $ for (NodeTests.asVariableStatement node <#> Nodes.interface) \{ declarationList } -> do
-      --   let
-      --     { declarations } = Nodes.interface declarationList
-      --   for declarations \decl -> do
-      --     let
-      --       { name } = Nodes.interface decl
-      --     for (NodesTests.asIdentifier name <#> Nodes.interface) \{ escapedText } -> do
-      --       traceM "declaration:"
-      --       traceM escapedText
+-- void $ for (NodeTests.asVariableStatement node <#> Nodes.interface) \{ declarationList } -> do
+--   let
+--     { declarations } = Nodes.interface declarationList
+--   for declarations \decl -> do
+--     let
+--       { name } = Nodes.interface decl
+--     for (NodesTests.asIdentifier name <#> Nodes.interface) \{ escapedText } -> do
+--       traceM "declaration:"
+--       traceM escapedText
 
 type Declarations = Map FullyQualifiedName { typ :: Typ (), params :: Maybe (Params (Typ ())) }
 

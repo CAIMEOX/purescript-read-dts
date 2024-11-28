@@ -4,7 +4,7 @@ export const fromCompilerHost = (host: ts.CompilerHost) => {
   return {
     fileExists: host.fileExists.bind(host),
     directoryExists: host.directoryExists && host.directoryExists.bind(host),
-    getCurrentDirectory: host.getCurrentDirectory && host.getCurrentDirectory.bind(host),
+    // getCurrentDirectory: host.getCurrentDirectory,
     getDirectories: host.getDirectories && host.getDirectories.bind(host),
     getCanonicalFileName: host.getCanonicalFileName.bind(host),
     getNewLine: host.getNewLine.bind(host),

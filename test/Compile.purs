@@ -53,7 +53,7 @@ compile opts = do
     compilerOpts = NoProblem.coerce
       { module: moduleKind."ES2015"
       , moduleResolution: opts'.moduleResolution
-      , rootDirs: ["./src"]
+      , rootDirs: [ "./src" ]
       , target: scriptTarget."ES5"
       , strictNullChecks: opts'.strictNullChecks ! false
       , allowSyntheticDefaultImports: opt true
@@ -77,11 +77,12 @@ compileType
   -> SourceCode
   -> Aff
        { program :: Program
-       , type :: Maybe
-           { typ :: Typ ()
-           , params :: Maybe (Params (Typ ()))
-           }
-        , decls :: Declarations
+       , type ::
+           Maybe
+             { typ :: Typ ()
+             , params :: Maybe (Params (Typ ()))
+             }
+       , decls :: Declarations
        }
 compileType (TypeName name) source = do
   let

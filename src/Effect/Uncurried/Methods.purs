@@ -67,7 +67,6 @@ runEffectMth6 m = do
     m' = reflectSymbol m
   runEffectFn8 unsafeRunEffectMth6 m'
 
-
 foreign import data EffectMth7 :: Type -> Type -> Type -> Type -> Type -> Type -> Type -> Type -> Type
 
 foreign import unsafeRunEffectMth7 :: forall a1 a2 a3 a4 a5 a6 a7 b obj. EffectFn9 String obj a1 a2 a3 a4 a5 a6 a7 b

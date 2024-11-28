@@ -190,7 +190,7 @@ suite = Test.suite "Recursive type repr" do
       source
       $ roll
       $ AST.tsInterface
-          [roll $ TsTypeRef $ FullyQualifiedName "\"Root\".Y"]
+          [ roll $ TsTypeRef $ FullyQualifiedName "\"Root\".Y" ]
           [ { name: "n"
             , optional: false
             , type: roll $ AST.TsString
@@ -311,13 +311,13 @@ suite = Test.suite "Recursive type repr" do
         , "};"
         ]
       expected = roll $ AST.TsClass
-        { bases: [roll $ TsTypeRef (FullyQualifiedName "\"Root\".Base")]
-        , constructors: [[]]
+        { bases: [ roll $ TsTypeRef (FullyQualifiedName "\"Root\".Base") ]
+        , constructors: [ [] ]
         , props:
-          [ { name: "x1", optional: false, type: roll AST.TsString }
-          , { name: "x2", optional: false, type: roll AST.TsNumber }
-          , { name: "b", optional: false, type: roll AST.TsString }
-          ]
+            [ { name: "x1", optional: false, type: roll AST.TsString }
+            , { name: "x2", optional: false, type: roll AST.TsNumber }
+            , { name: "b", optional: false, type: roll AST.TsString }
+            ]
         }
     testXShouldEqual source expected
 
@@ -336,15 +336,14 @@ suite = Test.suite "Recursive type repr" do
         , "};"
         ]
       expected = roll $ AST.TsClass
-        { bases: [roll $ AST.TsApplication (FullyQualifiedName "\"Root\".Base") (Array.NonEmpty.singleton $ roll AST.TsNumber)]
-        , constructors: [[]]
+        { bases: [ roll $ AST.TsApplication (FullyQualifiedName "\"Root\".Base") (Array.NonEmpty.singleton $ roll AST.TsNumber) ]
+        , constructors: [ [] ]
         , props:
-          [ { name: "x1", optional: false, type: roll AST.TsString }
-          , { name: "b", optional: false, type: roll AST.TsNumber }
-          ]
+            [ { name: "x1", optional: false, type: roll AST.TsString }
+            , { name: "b", optional: false, type: roll AST.TsNumber }
+            ]
         }
     testXShouldEqual source expected
-
 
 --  do
 --    let
@@ -385,7 +384,6 @@ suite = Test.suite "Recursive type repr" do
 --           ]
 --         }
 --     testXShouldEqual source expected
-
 
 -- | This fails but on our unfold recursion...
 -- | It should probably anyway or maybe...

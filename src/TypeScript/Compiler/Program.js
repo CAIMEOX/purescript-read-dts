@@ -3,6 +3,8 @@ export function createCompilerHostImpl(options) {
     return ts.createCompilerHost(options, true);
 }
 export function createProgramImpl(rootNames, options, host) {
+    host.getCurrentDirectory = () => process.cwd();
+
     return ts.createProgram(rootNames, options, host);
 }
 export function getTypeChecker(program) {

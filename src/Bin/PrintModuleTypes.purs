@@ -41,6 +41,7 @@ import Unsafe.Coerce (unsafeCoerce)
 data RootModule
   = RootFilePath FilePath
   | RootFileContent FilePath String
+
 derive instance Generic RootModule _
 
 instance Show RootModule where
@@ -74,13 +75,13 @@ compile rootModule = do
           , source: SourceCode fileContent
           }
       compilerHost' <- InMemory.boundedCompilerHost
-        { files: [inMemoryRoot]
+        { files: [ inMemoryRoot ]
         , defaultLib: Nothing
         , subhost: Just $ compilerHost
         }
       pure { host: compilerHost', root: filePath }
 
-  createProgram [conf.root] compilerOpts (Just $ BoundedCompilerHost.toCompilerHost conf.host)
+  createProgram [ conf.root ] compilerOpts (Just $ BoundedCompilerHost.toCompilerHost conf.host)
 
 data TypeTransformation
   = ApplyDefaultParams
@@ -88,7 +89,6 @@ data TypeTransformation
   | ExpandOneLayer
   | ExpandTwoLayers
   | ExpandRecursively
-
 
 type Options =
   { typeTransformation :: Maybe TypeTransformation
@@ -223,8 +223,6 @@ main = do
         for_ start' \startingPosition -> do
           log $ "  Start: " <> show startingPosition
 
-
-
   case ReadDTS.AST.types program of
     Right types -> do
       case Map.lookup fqn types of
@@ -237,4 +235,4 @@ main = do
           traceM $ "Type not found: " <> unwrap fqn
     Left err -> do
       traceM $ "FAILURE: " <> show err
-      -- failure $ "FAILURE: " <> show err
+-- failure $ "FAILURE: " <> show err

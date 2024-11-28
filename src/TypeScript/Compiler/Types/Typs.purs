@@ -43,8 +43,7 @@ asIntersectionType = toMaybe <<< runFn1 asIntersectionTypeImpl
 foreign import asIntersectionTypeImpl :: forall r. Fn1 (Typ r) (Nullable IntersectionType)
 
 -- | Interface or Class
-type InterfaceTypeRow r
-  = ObjectTypeRow
+type InterfaceTypeRow r = ObjectTypeRow
   +
     ( typeParameters :: Opt (Array TypeParameter)
     , outerTypeParameters :: Opt (Array TypeParameter)

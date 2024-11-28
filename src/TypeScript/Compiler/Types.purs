@@ -15,41 +15,41 @@ foreign import data TypeChecker :: Type
 
 foreign import data ScriptTarget :: Type
 
-foreign import scriptTarget ::
-  { "ES3" :: ScriptTarget
-  , "ES5" :: ScriptTarget
-  , "ES2015" :: ScriptTarget
-  , "ES2016" :: ScriptTarget
-  , "ES2017" :: ScriptTarget
-  , "ES2018" :: ScriptTarget
-  , "ES2019" :: ScriptTarget
-  , "ES2020" :: ScriptTarget
-  , "ESNext" :: ScriptTarget
-  , "JSON" :: ScriptTarget
-  , "Latest" :: ScriptTarget
-  }
+foreign import scriptTarget
+  :: { "ES3" :: ScriptTarget
+     , "ES5" :: ScriptTarget
+     , "ES2015" :: ScriptTarget
+     , "ES2016" :: ScriptTarget
+     , "ES2017" :: ScriptTarget
+     , "ES2018" :: ScriptTarget
+     , "ES2019" :: ScriptTarget
+     , "ES2020" :: ScriptTarget
+     , "ESNext" :: ScriptTarget
+     , "JSON" :: ScriptTarget
+     , "Latest" :: ScriptTarget
+     }
 
 foreign import data ModuleKind :: Type
 
-foreign import moduleKind ::
-  { "None" :: ModuleKind
-  , "CommonJS" :: ModuleKind
-  , "AMD" :: ModuleKind
-  , "UMD" :: ModuleKind
-  , "System" :: ModuleKind
-  , "ES2015" :: ModuleKind
-  , "ESNext" :: ModuleKind
-  }
+foreign import moduleKind
+  :: { "None" :: ModuleKind
+     , "CommonJS" :: ModuleKind
+     , "AMD" :: ModuleKind
+     , "UMD" :: ModuleKind
+     , "System" :: ModuleKind
+     , "ES2015" :: ModuleKind
+     , "ESNext" :: ModuleKind
+     }
 
 foreign import data ModuleResolutionKind :: Type
 
-foreign import moduleResolutionKind ::
-  { "Classic" :: ModuleResolutionKind
-  , "Node10" :: ModuleResolutionKind
-  , "Node16" :: ModuleResolutionKind
-  , "NodeNext" :: ModuleResolutionKind
-  , "Bundler" :: ModuleResolutionKind
-  }
+foreign import moduleResolutionKind
+  :: { "Classic" :: ModuleResolutionKind
+     , "Node10" :: ModuleResolutionKind
+     , "Node16" :: ModuleResolutionKind
+     , "NodeNext" :: ModuleResolutionKind
+     , "Bundler" :: ModuleResolutionKind
+     }
 
 type CompilerOptions =
   { "module" :: Opt ModuleKind
@@ -106,7 +106,6 @@ foreign import data Symbol_ :: Type
 
 -- Used by `Checker.getExportsOfModule`
 newtype ModuleSymbol = ModuleSymbol Symbol_
-
 
 newtype FullyQualifiedName = FullyQualifiedName String
 

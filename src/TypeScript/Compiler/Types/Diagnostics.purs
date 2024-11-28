@@ -17,25 +17,26 @@ foreign import data DiagnosticCategory :: Type
 instance Eq DiagnosticCategory where
   eq = unsafeRefEq
 
-foreign import diagnosticCategory :: Immutable
-  ( "Warning" :: DiagnosticCategory
-  , "Error" :: DiagnosticCategory
-  , "Suggestion" :: DiagnosticCategory
-  , "Message" :: DiagnosticCategory
-  )
+foreign import diagnosticCategory
+  :: Immutable
+       ( "Warning" :: DiagnosticCategory
+       , "Error" :: DiagnosticCategory
+       , "Suggestion" :: DiagnosticCategory
+       , "Message" :: DiagnosticCategory
+       )
 
 newtype DiagnosticMessageChain = DiagnosticMessageChain
   ( Immutable
-    ( messageText :: String
-    , category :: DiagnosticCategory
-    , code :: Int
-    , next :: Opt (Array DiagnosticMessageChain)
-    )
+      ( messageText :: String
+      , category :: DiagnosticCategory
+      , code :: Int
+      , next :: Opt (Array DiagnosticMessageChain)
+      )
   )
+
 derive instance Newtype DiagnosticMessageChain _
 
 type MessageText = Untagged (StringRow + (diagnosticMessageChain :: DiagnosticMessageChain))
-
 
 -- export interface Diagnostic extends DiagnosticRelatedInformation {
 --     /** May store more in future. For now, this will simply be `true` to indicate when a diagnostic is an unused-identifier diagnostic. */
@@ -59,7 +60,7 @@ type MessageText = Untagged (StringRow + (diagnosticMessageChain :: DiagnosticMe
 type DiagnosticRelatedInformationRow =
   ( category :: DiagnosticCategory
   , code :: Int
-  , file ::  Opt SourceFile
+  , file :: Opt SourceFile
   , start :: Opt Int
   , length :: Opt Int
   , messageText :: MessageText
@@ -67,13 +68,15 @@ type DiagnosticRelatedInformationRow =
 
 newtype DiagnosticRelatedInformation =
   DiagnosticRelatedInformation (Immutable DiagnosticRelatedInformationRow)
+
 derive instance Newtype DiagnosticRelatedInformation _
 
 newtype Diagnostic = Diagnostic
   ( Immutable
-    ( source :: Opt String
-    , relatedInformation :: Opt (Array DiagnosticRelatedInformation)
-    | DiagnosticRelatedInformationRow
-    )
+      ( source :: Opt String
+      , relatedInformation :: Opt (Array DiagnosticRelatedInformation)
+      | DiagnosticRelatedInformationRow
+      )
   )
+
 derive instance Newtype Diagnostic _

@@ -1,7 +1,5 @@
-.psci_modules
-node_modules
-.psci
-
+/bower_components/
+/node_modules/
 /.pulp-cache/
 /output/
 /generated-docs/
@@ -10,6 +8,3 @@ node_modules
 /.purs*
 /.psa*
 /.spago
-
-package-lock.json
-*.js.map

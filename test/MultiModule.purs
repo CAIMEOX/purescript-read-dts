@@ -148,7 +148,7 @@ suite = Test.suite "Cross module definitions" do
       types `flip shouldEqual` fromHomogeneous
         { "\"Root\".X": TypeRepr $ roll $ AST.TsClass
             { bases: []
-            , constructors: [[]]
+            , constructors: [ [] ]
             , props: [ { name: "m", optional: false, type: roll $ AST.TsTypeRef $ FullyQualifiedName "X.Y" } ]
             }
         , "X.Y": TypeRepr $ roll $ AST.TsInterface

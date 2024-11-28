@@ -53,7 +53,7 @@ compile opts = do
       , moduleResolution: opt moduleResolutionKind."Bundler"
       , noEmitOnError: opt true
       , noImplicitAny: opt true
-      , rootDirs: ["."]
+      , rootDirs: [ "." ]
       , target: opt scriptTarget."ES5"
       , strictNullChecks: false
       , allowSyntheticDefaultImports: opt true
@@ -94,9 +94,9 @@ suite = Test.suite "Golden.ThreeJs" do
     program <- liftEffect $ compile
       { dir: DirName "test/Golden/ts/three@0.152/src"
       , roots:
-        [ "materials/MeshBasicMaterial.d.ts"
-        -- , "three@0.156/math/Vector3.d.ts"
-        ]
+          [ "materials/MeshBasicMaterial.d.ts"
+          -- , "three@0.156/math/Vector3.d.ts"
+          ]
       , modules: []
       }
 

@@ -41,7 +41,6 @@ toDeclarationStatement = toDeclarationStatementImpl
 -- | FIXME: don't export
 foreign import toDeclarationStatementImpl :: forall l r. Node l r -> Nodes.DeclarationStatement
 
-
 -- These are all declaration statements but `VariableStatement`/`VariableDeclaration` is something else...
 -- export interface ExportAssignment extends DeclarationStatement, JSDocContainer {
 -- export interface FunctionDeclaration extends FunctionLikeDeclarationBase, DeclarationStatement, LocalsContainer {

@@ -40,7 +40,6 @@ nodeText node = do
 
 foreign import getChildren :: forall l k. Node l k -> Array (Node "" ())
 
-
 -- export interface ObjectBindingPattern extends Node {
 --     readonly kind: SyntaxKind.ObjectBindingPattern;
 --     readonly parent: VariableDeclaration | ParameterDeclaration | BindingElement;
@@ -56,7 +55,6 @@ foreign import getChildren :: forall l k. Node l k -> Array (Node "" ())
 -- export type BindingPattern = ObjectBindingPattern | ArrayBindingPattern;
 
 type BindingName = Node "" () -- Identifier | BindingPattern;
-
 
 -- | Types and stubs which are required
 -- | by `Compiler.Factory.NodeTests`.
@@ -176,6 +174,7 @@ type HeritageClause = Node "HeritageClause" ()
 type Identifier = Node "Identifier"
   ( escapedText :: String
   )
+
 type Identifiers = Node "Identifiers" ()
 type IfStatement = Node "IfStatement" ()
 type ImportClause = Node "ImportClause" ()
@@ -249,7 +248,7 @@ type NamespaceExportDeclaration = Node "NamespaceExportDeclaration"
 type NamespaceImport = Node "NamespaceImport" ()
 type NewExpression = Node "NewExpression" ()
 type NoSubstitutionTemplateLiteral = Node "NoSubstitutionTemplateLiteral" ()
-type NodeWithTypeArgumentsRow r = ( typeArguments :: Opt (Array TypeNode) | r)
+type NodeWithTypeArgumentsRow r = (typeArguments :: Opt (Array TypeNode) | r)
 type NodeWithTypeArguments = Node "NodeWithTypeArguments" (NodeWithTypeArgumentsRow ())
 type NonNullExpression = Node "NonNullExpression" ()
 type NotEmittedStatement = Node "NotEmittedStatement" ()
@@ -349,7 +348,7 @@ type TypeQueryNode = Node "TypeQueryNode" ()
 
 -- export type EntityName = Identifier | QualifiedName;
 foreign import data EntityName :: Type
-type TypeReferenceNode = Node "TypeReferenceNode" ( NodeWithTypeArgumentsRow + ( typeName :: EntityName))
+type TypeReferenceNode = Node "TypeReferenceNode" (NodeWithTypeArgumentsRow + (typeName :: EntityName))
 
 -- | Not a real node kind but rather a union
 -- | export type SignatureDeclaration =

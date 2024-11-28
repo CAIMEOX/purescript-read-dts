@@ -75,8 +75,8 @@ instance MonadThrow e m => MonadThrow e (PackageCodegenT s m) where
   throwError e = lift (throwError e)
 
 instance MonadError e m => MonadError e (PackageCodegenT e m) where
-    catchError (PackageCodegenT m) h = PackageCodegenT $
-      catchError m (\e -> case h e of PackageCodegenT s -> s)
+  catchError (PackageCodegenT m) h = PackageCodegenT $
+    catchError m (\e -> case h e of PackageCodegenT s -> s)
 
 type PackageCodegen e = PackageCodegenT e (Free Identity)
 
@@ -88,7 +88,6 @@ emptyModuleCodegenState =
   , importsQualified: Map.empty
   , declarations: List.Nil
   }
-
 
 withModule :: forall a e. ModulePath -> TC.Codegen e a -> PackageCodegen e a
 withModule mp (TC.CodegenT c) = PackageCodegenT $ state \st@{ modules } -> do

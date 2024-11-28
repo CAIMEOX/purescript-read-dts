@@ -76,9 +76,9 @@ data TsType decl ref
       }
   | TsFunction (ReadDTS.Args ref) ref
   | TsInterface
-    { bases :: Array ref
-    , props :: (ReadDTS.Props ref)
-    }
+      { bases :: Array ref
+      , props :: (ReadDTS.Props ref)
+      }
   | TsIntersection (Array ref)
   | TsNull
   | TsNumber
@@ -149,12 +149,12 @@ instance Foldable (TsType decl) where
   foldMap _ (TsBooleanLiteral _) = mempty
   foldMap f (TsClass { bases, constructors, props }) =
     foldMap f bases
-    <> foldMap (foldMap (f <<< _.type)) constructors
-    <> foldMap (f <<< _.type) props
+      <> foldMap (foldMap (f <<< _.type)) constructors
+      <> foldMap (f <<< _.type) props
   foldMap f (TsFunction args r) = foldMap (f <<< _.type) args <> f r
   foldMap f (TsInterface { bases, props }) =
     foldMap f bases
-    <> foldMap (f <<< _.type) props
+      <> foldMap (f <<< _.type) props
   -- foldMap f (Intersection ts) = fold (map (foldMap f) ts)
   foldMap f (TsApplication _ ps) = foldMap f ps
   foldMap f (TsIntersection ts) = foldMap f ts
